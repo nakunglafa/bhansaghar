@@ -4,15 +4,15 @@
     <form class="register-form" [formGroup]="registerForm">
       <input type="text" placeholder="name" formControlName="name" required>
         <div *ngIf="!registerForm.controls['name'].valid&&registerForm.controls['name'].touched">please enter your name</div>
-      <input type="password" placeholder="password" fromControlName="password" required>
+      <input type="password" placeholder="password" formControlName="password">
          <div *ngIf="!registerForm.controls['password'].valid&&registerForm.controls['password'].touched">password must contain alphanumerc value between 8-20</div>
       <input type="email" placeholder="email" formControlName="email" required>
                 <div *ngIf="!registerForm.controls['email'].valid&&registerForm.controls['email'].touched">please enter your valid email</div>
       <input type="text" placeholder="Contact" formControlName="contact" required>
               <div *ngIf="!registerForm.controls['contact'].valid&&registerForm.controls['contact'].touched">please enter valid Number</div>
-      <button (click)="addUser(registerForm.value)" [disabled]="!registerForm.valid">create</button>
-      {{registerForm}}
-      <p class="message">Already registered? <a routerLink="../login">Sign In</a></p>
+      <button (click)="addUser(registerForm.value)">create</button>
+      <p class="message" *ngIf="!submit">Already registered? <a routerLink="../login">Sign In</a></p>
+      <p class="message" *ngIf="submit">Submitting Form ...</p>
     </form>
  
   </div>

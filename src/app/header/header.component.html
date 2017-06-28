@@ -1,0 +1,34 @@
+
+    <div class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <a href="../" class="navbar-brand">BhansaGhar Logo</a>
+          <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li><a href="../">Help</a></li>
+             <li><a href="../">about</a></li>
+              <li><a href="../">inbox</a></li>
+            <li>
+              <a href="http://news.bootswatch.com">Blog</a>
+            </li>
+         
+          </ul>
+
+          <ul class="nav navbar-nav navbar-right">
+            
+            <li><a (click)="logout()"  class="btn">Logout<span *ngIf="loggingOut"logging Out></span></a></li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+
+<p>
+  header works!
+</p>

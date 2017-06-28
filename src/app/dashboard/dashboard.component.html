@@ -1,0 +1,22 @@
+<div class="row">
+  <app-header></app-header>
+</div>
+<hr>
+<div class="row">
+  <div class="col-lg-2">
+    <div class="bs-component">
+              <div class="list-group">
+                <a [routerLink]="editKitchen" class="list-group-item active">
+                  Edit kitchen
+                </a>
+                <a href="#" class="list-group-item">menu bar
+                </a>
+                <a href="#" class="list-group-item">menu bar
+                </a>
+              </div>
+            </div>
+  </div>
+  <div class="col-lg-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>

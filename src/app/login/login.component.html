@@ -1,7 +1,9 @@
 
   <div class="login-page">
+    <p *ngIf="loginfail" class="message" align="center" color="red">
+        username and password doesnt match
+    </p>
   <div class="form">
-
     <form class="login-form" [formGroup]="userForm">
       <input type="email" placeholder="username" formControlName="username">
         <div class="error" *ngIf="!userForm.controls['username'].valid && userForm.controls['username'].touched">
@@ -11,8 +13,9 @@
         <div *ngIf="!userForm.controls['password'].valid && userForm.controls['password'].touched">
           inter valid password please
         </div>
-      <button (click)="login(userForm.value)">login</button>
-      <p class="message">Not registered? <a routerLink="../register">Create an account</a></p>
+      <button (click)="login(userForm.value)" [disabled]="!userForm.valid">login</button>
+      <p class="message" *ngIf="!submitted">Not registered? <a routerLink="../register">Create an account</a></p>
+      <p class="message" *ngIf="submitted">Please wait logging in...</p>
     </form>
   </div>
 </div>

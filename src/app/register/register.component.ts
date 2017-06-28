@@ -10,30 +10,37 @@ import { registerService } from '../shared/register.service';
 })
 export class RegisterComponent implements OnInit {
   public registerForm:FormGroup;
+  public submit:boolean=false;
   constructor(private _fb:FormBuilder,private _service:registerService) { 
       this.registerForm=this._fb.group({
-        name:[null,Validators.required],
-        email:[null,Validators
-          .compose([Validators.required,Validators.email])],
-        contact:[null,Validators.compose([Validators.required
-        ,Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,9}$/)])],
-        password:[null,Validators.required]
+        name:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(50)])],
+        email:[null,Validators.compose([Validators.required,Validators.email])],
+        contact:[null,Validators.compose([Validators.required,Validators.pattern(/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{3,9}$/)])],
+        password:[null,Validators.compose([Validators.minLength(8),Validators.maxLength(50)])]
       })
   }
 
   ngOnInit() {
 
   }
- addUser(data:Register){
-  
-  console.log(this.registerForm);
-    /*this._service.addUer(data)
-    .subscribe(
-      data=>console.log(data),
-      error=>console.log(error),
-      ()=>console.log('finished')
-    )
-    */
+  handleData(data)
+  {
+    this.submit=false;
+    console.log(data);
 
+  }
+  errorHandle(error)
+  {
+    this.submit=false;
+    console.log(error);
+  }
+ addUser(data:Register){
+    this.submit=true;
+    this._service.addUer(data)
+    .subscribe(
+      data=>this.handleData(data),
+      error=>this.errorHandle(error),
+      ()=>this.submit=false
+    )
  }
 }

@@ -55,6 +55,14 @@ private data:Request={
          return this.Tokendata;
      }
     }
+    isLoggedin(){
+        let token=localStorage.getItem('token');
+        return token?true:false;
+    }
+    logout(){
+			localStorage.clear();
+            return true;
+    }
     
     
 }
